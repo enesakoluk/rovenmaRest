@@ -16,7 +16,7 @@ class ListCreateProductAPIView(ListCreateAPIView):
     filterset_class = ProductFilter
 
     def perform_create(self, serializer):
-        # Assign the user who created the movie
+        
         serializer.save(user=self.request.user)
 
 
