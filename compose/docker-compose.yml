@@ -1,0 +1,29 @@
+version: '3'
+services:
+  docker_api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8550:80 
+  django:
+    build:
+      context: ../productManagement
+      dockerfile: ../productManagement/Dockerfile
+    container_name: productTEST
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    depends_on:
+      - postgres
+    expose:
+     - "8000"
+     
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+   
+    environment:
+      - POSTGRES_PASSWORD=postgrespostgres
+        
+networks:
+  django-network:
+    driver: bridge

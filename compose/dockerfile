@@ -1,0 +1,6 @@
+FROM nginx
+RUN rm -rf /etc/nginx/conf.d/default.conf
+COPY default.conf /etc/nginx/conf.d/default.conf
+# RUN ["apt-get", "update"]
+# RUN ["apt-get", "-y", "install", "nano"]
+CMD nginx -g 'daemon off;'
