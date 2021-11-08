@@ -2,7 +2,6 @@ from django_filters import rest_framework as filters
 from product.models import Products
 
 
-# We create filters for each field we want to be able to filter on
 class ProductFilter(filters.FilterSet):
     name = filters.CharFilter(lookup_expr='icontains')
     id = filters.CharFilter(lookup_expr='icontains')
